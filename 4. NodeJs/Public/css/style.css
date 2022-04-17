@@ -1,0 +1,16 @@
+body {
+    align-items: center;
+    text-align: center;
+ }
+ .Login{
+    align-items: center;
+    padding: 20px;
+    background-color: whitesmoke;
+ }
+ table, th, td {
+    border: 1px solid gray;
+    align-items: center;
+    text-align: center;
+    border: 2px solid gray;
+    padding: 10px;
+  }

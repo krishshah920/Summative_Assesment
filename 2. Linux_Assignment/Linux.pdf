@@ -1,0 +1,92 @@
+Linux Assignment
+
+1) Grep
+
+
+2) echo */ | wc
+
+
+3) date –date=”2/08/2018” “+%a”
+
+
+4) ls -l *.lst
+
+
+5)
+    #!/bin/bash
+    while IFS="," read -r roll_num name marks
+    do
+    if [ $marks -ge 35 ]
+    then
+    `touch pass | echo "$roll_num,$name,$marks" >> pass`
+    else
+    `touch fail | echo "$roll_num,$name,$marks" >> fail`
+    fi
+    done < <(tail -n +2 student)
+
+
+6)
+    #!/bin/bash
+    u_input=$(date -d $1 +"%Y%m%d")
+    while IFS="," read -r name dob
+    do
+    c_dob=$(date -d $dob +"%Y%m%d")
+    if [ $c_dob -ge $u_input ]
+    then
+    echo "$dob"
+    fi
+    done < <(tail -n +2 employee)
+
+
+7)
+    #!/bin/bash
+    count=0
+    while IFS="," read -r name dep
+    do
+    if [ $dep == $1 ]
+    then
+    count=`expr $count + 1`
+    fi
+    done < <(tail -n +2 employee)
+    echo $count
+
+
+8)  awk -F ',' '{print $2}' employee | sort | uniq -c
+
+9)
+    #!/bin/bash
+    while IFS="," read -r name sal
+    do
+    if [ $name == $1 ]
+    then
+    r_sal=$sal
+    break
+    fi
+    done < <(tail -n +2 employee)
+    while IFS="," read -r name sal
+    do
+    if [ $r_sal -lt $sal ]
+    then
+    echo $name
+    fi
+    done < <(tail -n +2 employee)
+
+
+10) awk -F ',' '{print $2}' employee | sort | uniq -c
+
+
+11)
+    s#!/bin/bash
+    while IFS="," read -r name sal
+    do
+    t_sal=`expr $t_sal + $sal`
+    count=`expr $count + 1`
+    done < <(tail -n +2 employee)
+    avg_sal=`expr $t_sal / $count`
+    while IFS="," read -r name sal
+    do
+    if [ $sal -gt $avg_sal ]
+    then
+    echo $name
+    fi
+    done < <(tail -n +2 employee)
